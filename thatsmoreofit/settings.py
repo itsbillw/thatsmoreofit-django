@@ -25,7 +25,7 @@ SECRET_KEY = '578x4)_u-avyb9q%gjc@a1@j0rjduf^7g-=zp$^at#=97elay7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['itsbillw.pythonanywhere.com']
 
 
 # Application definition
@@ -123,6 +123,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/itsbillw/thatsmoreofit/static'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 # Settings for django-bootstrap4
 BOOTSTRAP4 = {
