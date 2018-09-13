@@ -1,0 +1,66 @@
+{% load bootstrap4 %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>that's more of it - home</title>
+
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+
+    {% load static %}
+		<link rel="icon" href="{% static 'home/images/tukibill.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'home/home-style.css' %}">
+		<script type="text/javascript" src="{% static 'home/js/scrolling.js' %}"></script>
+	</head>
+	<body>
+		<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+		<div class="bgimg-1">
+			<header class="masthead mb-auto">
+				<div class="inner">
+					<nav class="nav nav-masthead justify-content-center">
+						<a class="nav-link active" href="{% url 'home:index' %}">Home</a>
+						<a class="nav-link" href="#gallery">Gallery</a>
+						<a class="nav-link" href="#contact">Contact</a>
+					</nav>
+				</div>
+			</header>
+			<div class="caption">
+				<span class="border">that's more of it</span>
+			</div>
+		</div>
+		<div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+			<h3 style="text-align:center;">Welcome blurb</h3>
+			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Nascetur per nec posuere turpis, lectus nec libero turpis nunc at, sed posuere mollis ullamcorper libero ante lectus, blandit pellentesque a, magna turpis est sapien duis blandit dignissim. Viverra interdum mi magna mi, morbi sociis. Condimentum dui ipsum consequat morbi, curabitur aliquam pede, nullam vitae eu placerat eget et vehicula. Varius quisque non molestie dolor, nunc nisl dapibus vestibulum at, sodales tincidunt mauris ullamcorper, dapibus pulvinar, in in neque risus odio. Accumsan fringilla vulputate at quibusdam sociis eleifend, aenean maecenas vulputate, non id vehicula lorem mattis, ratione interdum sociis ornare. Suscipit proin magna cras vel, non sit platea sit, maecenas ante augue etiam maecenas, porta porttitor placerat leo.</p>
+		</div>
+		<div class="bgimg-2" id="gallery">
+			<div class="caption">
+        <a href="{% url 'gallery:index' %}">
+          <span class="border" style="font-size:25px;background-color: #ff9900;">Photo Gallery</span>
+        </a>
+			</div>
+		</div>
+		<div style="position:relative;">
+			<div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: center;">
+				<p>Room to expand</p>
+			</div>
+		</div>
+		<div class="bgimg-3" id="contact">
+			<div class="caption">
+				<a href="https://twitter.com/itsbillw">
+					<span class="border" style="font-size:25px;color: #f7f7f7;">CONTACT</span>
+				</a>
+			</div>
+		</div>
+		<div style="position:relative;">
+			<div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+				<p>#todo insta, twitter contact details/icons, menu</p>
+			</div>
+		</div>
+
+	</body>
+</html>
