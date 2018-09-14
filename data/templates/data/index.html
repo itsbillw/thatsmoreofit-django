@@ -1,0 +1,13 @@
+{% extends "data/base.html" %}
+{% load bootstrap4 %}
+{% load staticfiles %}
+
+{% block content %}
+<main role="main" class="inner cover">
+  <h1 class="cover-heading">Data learning</h1>
+  <p class="lead">Learning space for django, pandas and data</p>
+  <p class="lead">
+    <a href="{% url 'data:new' %}" class="btn btn-lg btn-secondary">Learn more</a>
+  </p>
+</main>
+{% endblock content %}
