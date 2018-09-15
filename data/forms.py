@@ -11,7 +11,7 @@ class TopicForm(forms.ModelForm):
 class EntryForm(forms.ModelForm):
     class Meta:
         model = Entry
-        fields = ['blood_sugar','carbs','insulin','insulin_type','text','date_added']
+        fields = ['blood_sugar','carbs','insulin','insulin_type','text']
         labels = {'text': 'Notes'}
         widgets = {'blood_sugar': forms.NumberInput()}
         widgets = {'carbs': forms.NumberInput()}
