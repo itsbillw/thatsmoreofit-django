@@ -8,6 +8,9 @@ urlpatterns = [
     # Home page.
     path('', views.index, name='index'),
 
+    # Reporting page.
+    path('reporting/', views.reporting, name='reporting'),
+
     # Show all topics.
     path('topics/', views.topics, name='topics'),
 

@@ -11,7 +11,11 @@ def index(request):
     """The home page for data"""
     topics = Topic.objects.order_by('date_added')
     context = {'topics': topics}
-    return render(request, 'data/index.html')
+    return render(request, 'data/index.html', context)
+
+def reporting(request):
+    """The home page for reporting"""
+    return render(request, 'data/reporting.html')
 
 def topics(request):
     """Show all topics"""
