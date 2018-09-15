@@ -1,0 +1,21 @@
+{% extends "data/base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="main text-left">
+    <div class="container" style="margin-top:30px">
+        <h2><a href="{% url 'data:topic' topic.id %}">{{ topic }}</a></h2><p></p>
+        <h4>Edit entry from - {{ entry.date_added|date:'M d, Y H:i' }}</h4>
+        <form action="{% url 'data:edit_entry' entry.id %}" method='post'>
+            {% csrf_token %}
+             <table class="table table-sm">
+                 <tbody>
+                    {{ form.as_table }}
+                 </tbody>
+             </table>
+            <button class="btn btn-primary" name="submit">save changes</button>
+            <a class="btn btn-primary" href="{% url 'data:topic' topic.id %}">cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock content %}

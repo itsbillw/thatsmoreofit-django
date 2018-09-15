@@ -6,7 +6,8 @@
     <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-primary rounded box-shadow">
         <img class="mr-3" src="/static/data/images/diabetes.ico" alt="" width="48" height="48">
         <div class="lh-100">
-            <h4 class="mb-0 text-white lh-100">Diabetes data</h4>
+            <h6 class="mb-0 text-white lh-100">Diabetes data</h6>
+            <small>All Topics</small>
         </div>
     </div>
     <div class="my-3 p-3 bg-white rounded box-shadow text-left">
@@ -26,7 +27,9 @@
         <li>No topics have been added yet.</li>
         {% endfor %}
         <div class="container">
-            <a href="{% url 'data:topics' %}">All Topics</a>
+            <small class="d-block text-right mt-3">
+                    <a href="{% url 'data:new_topic' %}">Add new topic</a>
+            </small>
         </div>
     </div>
 </main>

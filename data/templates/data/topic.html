@@ -1,0 +1,53 @@
+{% extends "data/base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+<main role="main" class="container">
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-primary rounded box-shadow text-left">
+        <img class="mr-3" src="/static/data/images/diabetes.ico" alt="" width="48" height="48">
+        <div class="lh-100">
+            <h3 class="mb-0 text-white lh-100">{{ topic }}</h3>
+        </div>
+    </div>
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+        <div class="container">
+            <a class="btn btn-primary" href="{% url 'data:new_entry' topic.id %}">Add new entry</a>
+        </div>
+        <div class="media text-muted pt-3">
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <table class="table table-sm table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 12.5%"></th>
+                            <th style="width: 12.5%">Blood Sugar</th>
+                            <th style="width: 12.5%">Carbs</th>
+                            <th style="width: 12.5%">Insulin</th>
+                            <th style="width: 12.5%">Insulin Type</th>
+                            <th style="width: 12.5%">Event Type</th>
+                            <th style="width: 30%">Note</th>
+                            <th style="width: 7.5%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in entries %}
+                        <tr>
+                            <td>{{ entry.date_added|date:'m/d/y H:i' }}</td>
+                            <td>{{ entry.blood_sugar }}</td>
+                            <td>{{ entry.carbs }}</td>
+                            <td>{{ entry.insulin }}</td>
+                            <td>{{ entry.insulin_type }}</td>
+                            <td>{{ entry.event_type }}</td>
+                            <td>{{ entry.text }}</td>
+                            <td><a class="btn btn-sm btn-primary" href="{% url 'data:edit_entry' entry.id %}">edit</a></td>
+                        </tr>
+                        {% empty %} There are no entries for this topic yet. {% endfor %}
+                    </tbody>
+                </table>
+            </p>
+        </div>
+        <div class="container">
+            <a class="btn btn-primary btn-right" href="{% url 'data:new_entry' topic.id %}">Add new entry</a>
+        </div>
+    </div>
+</main>
+{% endblock content %}
