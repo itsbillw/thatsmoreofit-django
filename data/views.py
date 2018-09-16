@@ -17,6 +17,9 @@ def reporting(request):
     """The home page for reporting"""
     return render(request, 'data/reporting.html')
 
+def converter(request):
+    return render(request, 'data/convert.html')
+
 def topics(request):
     """Show all topics"""
     topics = Topic.objects.order_by('date_added')

@@ -11,6 +11,9 @@ urlpatterns = [
     # Reporting page.
     path('reporting/', views.reporting, name='reporting'),
 
+    # Reporting page.
+    path('converter/', views.converter, name='converter'),
+
     # Show all topics.
     path('topics/', views.topics, name='topics'),
 
