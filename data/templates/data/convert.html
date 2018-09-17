@@ -7,13 +7,16 @@
 {% endblock header %}
 
 {% block content %}
-<main role="main" class="container">
-  <h2>Blood Sugar Converter</h2>
-  <p>Type an A1C value to convert the value to Average Blood Sugar or vice versa:</p>
-
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-4">Blood Sugar Converter</h1>
+    <p>Type an A1C value to convert the value to Average Blood Sugar or vice versa:</p>
+  </div>
+</div>
+<div class="container">
   <p>
     <label>A1C</label>
-    <input id="inputFahrenheit" type="number" placeholder="A1C" oninput="bloodsugarConverterA1C(this.value)" onchange="bloodsugarConverterA1C(this.value)">
+    <input id="inputA1C" type="number" placeholder="A1C" oninput="bloodsugarConverterA1C(this.value)" onchange="bloodsugarConverterA1C(this.value)">
   </p>
   <p>Average Blood Sugar: <span id="outputEAG"></span></p>
 
@@ -22,6 +25,110 @@
     <input id="inputEAG" type="number" placeholder="Blood Glucose" oninput="bloodsugarConverterEAG(this.value)" onchange="bloodsugarConverterEAG(this.value)">
   </p>
   <p>A1C: <span id="outputA1C"></span></p>
+</div>
 
-</main>
+<div class="container">
+  <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+  Target info
+  </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="color:#004225">Glycemic Targets</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="background-color:#333">
+        <div class="form-group">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                Blood Glucose Targets for Nonpregnant Adults With Diabetes
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">A1C</div>
+              <div class="col-6">
+                <7.0%<br>
+                (53 mmol/L)
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">Preprandial capillary PG</div>
+              <div class="col-6">
+                80-130 mg/dL<br>
+                (4.4-7.2 mmol/L)
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">Peak postprandial capillary PG</div>
+              <div class="col-6">
+                <180 mg/dL*<br>
+                (<10.0 mmol/L)
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                More or less stringent targets may be appropriate for individual patients
+                if achieved without significant hypoglycemia or adverse events
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                More stringent target (<6.5%)<br>
+                <br>
+                Short diabetes duration<br>
+                Long life expectancy<br>
+                Type 2 diabetes treated with lifestyle or metformin only<br>
+                No significant CVD/vascular complications
+              </div>
+              <div class="col-6">
+                Less stringent target (<8.0%)<br>
+                <br>
+                Severe hypoglycemia history<br>
+                Limited life expectancy<br>
+                Advanced microvascular or macrovascular complications<br>
+                Extensive comorbidities<br>
+                Long-term diabetes in whom general A1C targets are difficult to attain
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Targets may be individualized based on:<br>
+                Age/life expectancy<br>
+                Comorbid conditions<br>
+                Diabetes duration<br>
+                Hypoglycemia status<br>
+                Individual patient considerations
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Lowering A1C below or around 7.0% has been shown to reduce:<br>
+                Microvascular complications<br>
+                Macrovascular disease (if implemented soon after diagnosis)<br>
+                Mortality (individuals with type 1 diabetes only)
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                *Postprandial glucose measurements should be made 1-2 hours after the beginning of the meal
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="http://www.ndei.org/ADA-diabetes-management-guidelines-glycemic-targets-A1C-PG.aspx.html" style="color:#004225">Source</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock content %}
