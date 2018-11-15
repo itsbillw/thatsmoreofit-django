@@ -1,36 +1,32 @@
-{% extends "data/base.html" %}
+{% extends "home/base.html" %}
 {% load bootstrap4 %}
+{% load staticfiles %}
+
+{% block header %}
+
+<title>That's more of it - Data</title>
+
+<!-- Custom styles for this template -->
+<link rel="stylesheet" type="text/css" href="{% static 'data/css/data-style.css' %}">
+
+{% endblock header %}
+
+{% block navbar %}
+<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'gallery:index' %}">Gallery</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'data:index' %}">Data</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home:index' %}#contact">Contact</a>
+    </li>
+  </ul>
+</div>
+{% endblock navbar %}
 
 {% block content %}
-<main role="main" class="container">
-    <p class="lead">
-      <a href="{% url 'data:converter' %}" class="btn btn-lg btn-secondary">Convert</a>
-    </p>
-    <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-primary rounded box-shadow">
-        <img class="mr-3" src="/static/data/images/diabetes.ico" alt="" width="48" height="48">
-        <div class="lh-100">
-            <h4 class="mb-0 text-white lh-100">Diabetes data</h4>
-        </div>
-    </div>
-    <div class="my-3 p-3 bg-white rounded box-shadow text-left">
-        <div class="container">
-            <p class="lead">
-                <a href="{% url 'data:new_topic' %}" class="btn btn-md btn-primary">Add new topic</a>
-            </p>
-        </div>
-        {% for topic in topics %}
-        <div class="media text-muted pt-3">
-            <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <a href="{% url 'data:topic' topic.id %}">{{ topic }}</a>
-            </p>
-        </div>
-        {% empty %}
-        <li>No topics have been added yet.</li>
-        {% endfor %}
-        <div class="container">
-            <a href="{% url 'data:topics' %}">All Topics</a>
-        </div>
-    </div>
-</main>
+
 {% endblock content %}

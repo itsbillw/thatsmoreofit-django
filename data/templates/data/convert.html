@@ -2,17 +2,15 @@
 {% load bootstrap4 %}
 {% load staticfiles %}
 
-{% block subheader %}
-<script type="text/javascript" src="{% static 'data/js/converter.js' %}"></script>
-{% endblock subheader %}
-
 {% block content %}
+<main role="main" class="container">
 <div class="jumbotron">
   <div class="container">
     <h1 class="display-4">Blood Sugar Converter</h1>
     <p>Type an A1C value to convert the value to Average Blood Sugar or vice versa:</p>
   </div>
 </div>
+
 <div class="container">
   <p>
     <label>A1C</label>
@@ -130,5 +128,9 @@
     </div>
   </div>
 </div>
-
+</main>
 {% endblock content %}
+
+{% block subcontent %}
+<script type="text/javascript" src="{% static 'data/js/converter.js' %}"></script>
+{% endblock subcontent %}

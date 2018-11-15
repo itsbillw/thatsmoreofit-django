@@ -8,10 +8,13 @@ from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
 
 def index(request):
+    return render(request, 'data/index.html')
+
+def datalog(request):
     """The home page for data"""
     topics = Topic.objects.order_by('date_added')
     context = {'topics': topics}
-    return render(request, 'data/index.html', context)
+    return render(request, 'data/datalog.html', context)
 
 def reporting(request):
     """The home page for reporting"""
