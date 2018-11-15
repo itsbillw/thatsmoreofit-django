@@ -1,0 +1,44 @@
+{% load bootstrap4 %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/static/home/images/tukibill.ico">
+
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/home-style.css' %}">
+
+    {% block header %}
+
+    {% endblock %}
+
+  </head>
+	<body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+    <nav id="navbar-example2" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="{% url 'home:index' %}">THAT'S MORE OF IT</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      {% block navbar %}
+
+      {% endblock navbar %}
+
+    </nav>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <script type="text/javascript" src="{% static 'home/js/scrolling.js' %}"></script>
+
+	</body>
+</html>
