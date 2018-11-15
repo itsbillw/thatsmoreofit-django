@@ -1,52 +1,30 @@
+{% extends "home/base.html" %}
 {% load bootstrap4 %}
 {% load staticfiles %}
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="google" content="notranslate">
-    <meta http-equiv="Content-Language" content="en">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% block header %}
+<title>That's more of it - Data Learning</title>
+<link rel="stylesheet" type="text/css" href="{% static 'data/css/cover.css' %}">
+{% endblock header %}
 
-    <title>that's more of it - data</title>
+{% block subheader %}
+{% endblock subheader %}
 
-    {# Load CSS and JavaScript #}
-    {% bootstrap_css %}
-    {% bootstrap_javascript jquery='full' %}
+{% block navbar %}
+<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'gallery:index' %}">Gallery</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'data:index' %}">Data</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home:index' %}#contact">Contact</a>
+    </li>
+  </ul>
+</div>
+{% endblock navbar %}
 
-    <link rel="icon" href="{% static 'home/images/tukibill.ico' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'data/cover.css' %}">
-    {% block header %}
-    {% endblock header %}
-
-  </head>
-
-  <body class="text-center">
-
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header class="masthead mb-auto">
-        <div class="inner">
-          <h3 class="masthead-brand">that's more of it</h3>
-          <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" href="{% url 'home:index' %}">Home</a>
-            <a class="nav-link" href="{% url 'data:index' %}">Data</a>
-            <a class="nav-link" href="{% url 'data:reporting' %}">Reporting</a>
-          </nav>
-        </div>
-      </header>
-
-      {% block subheader %}
-      {% endblock subheader %}
-
-      {% block content %}
-      {% endblock content %}
-
-      <footer class="mastfoot mt-auto">
-        <div class="inner">
-          <p>Cover template for <a href="http://itsbillw.pythonanywhere.com/">thatsmoreofit</a>, by <a href="https://twitter.com/itsbillw">@itsbillw</a>.</p>
-        </div>
-      </footer>
-    </div>
-  </body>
-</html>
+{% block content %}
+{% endblock content %}

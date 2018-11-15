@@ -1,14 +1,11 @@
 {% extends "data/base.html" %}
 {% load bootstrap4 %}
 
-{% block subheader %}
-<p class="lead">
-  <a href="{% url 'data:converter' %}" class="btn btn-lg btn-secondary">Convert</a>
-</p>
-{% endblock subheader %}
-
 {% block content %}
 <main role="main" class="container">
+    <p class="lead">
+      <a href="{% url 'data:converter' %}" class="btn btn-lg btn-secondary">Convert</a>
+    </p>
     <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-primary rounded box-shadow">
         <img class="mr-3" src="/static/data/images/diabetes.ico" alt="" width="48" height="48">
         <div class="lh-100">
