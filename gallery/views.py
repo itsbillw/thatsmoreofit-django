@@ -1,8 +1,9 @@
 from django.shortcuts import render
 
-def index(request):
-    """The gallery page for thatsmoreofit"""
-    return render(request, 'gallery/index.html')
+from .models import Photo
 
-def albums(request):
-    return render(request, 'gallery/albums.html')
+def index(request):
+    """The gallery page for thatsmoreofit - Show all"""
+    photos = Photo.objects.order_by('date_added')
+    context = {'photos': photos}
+    return render(request, 'gallery/index.html', context)
