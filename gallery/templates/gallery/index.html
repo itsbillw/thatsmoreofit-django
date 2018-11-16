@@ -87,19 +87,15 @@
           <div class="row">
 
             {% for photo in photos %}
-
-            <!-- Modal practice tile -->
             <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
-                <img class="img-thumbnail" src="{{ photo }}" alt="Card image cap" data-toggle="modal" data-target="#exampleModal">
+                <img class="img-thumbnail" src="/static/{{ photo }}" alt="Card image cap" data-toggle="modal" data-target="#exampleModal{{ photo.id }}">
               </div>
             </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal{{ photo.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                  <img class="img-fluid" src="{{ photo }}">
+                  <img class="img-fluid" src="/static/{{ photo }}">
                   <div class="modal-footer">
                     image details go here...
                   </div>
@@ -108,7 +104,6 @@
             </div>
 
             {% empty %}
-
             {% endfor %}
 
           </div>
