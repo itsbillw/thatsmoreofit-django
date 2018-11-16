@@ -1,32 +1,42 @@
-{% extends "home/base.html" %}
+{% extends "data/base.html" %}
 {% load bootstrap4 %}
 {% load staticfiles %}
 
-{% block header %}
-
-<title>That's more of it - Data</title>
-
-<!-- Custom styles for this template -->
-<link rel="stylesheet" type="text/css" href="{% static 'data/css/data-style.css' %}">
-
-{% endblock header %}
-
-{% block navbar %}
-<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'gallery:index' %}">Gallery</a>
-    </li>
-    <li class="nav-item active">
-      <a class="nav-link" href="{% url 'data:index' %}">Data</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'home:index' %}#contact">Contact</a>
-    </li>
-  </ul>
-</div>
-{% endblock navbar %}
-
 {% block content %}
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Data Learning</h1>
+          <p>This is a space for data learning using django, pydata, bokeh, etc.</p>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Blood sugar data</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-secondary" href="{% url 'data:topics' %}" role="button">View details &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>A1c Calc</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-secondary" href="{% url 'data:converter' %}" role="button">View details &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Pandas</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div>
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>
 
 {% endblock content %}

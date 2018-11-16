@@ -1,13 +1,4 @@
-html,
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
 body {
-  height: 100%;
-  background-color: #004225;
-}
-
-body {
-  padding-top: 5rem;
-  display: -ms-flexbox;
-  display: flex;
-  color: #fff;
-  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+  padding-top: 3.5rem;
 }
