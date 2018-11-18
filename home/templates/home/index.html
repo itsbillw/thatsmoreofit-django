@@ -9,19 +9,15 @@
 {% endblock %}
 
 {% block navbar %}
-<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'gallery:index' %}">Gallery</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'data:index' %}">Data</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#contact">Contact</a>
-    </li>
-  </ul>
-</div>
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'gallery:index' %}">Gallery</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'data:index' %}">Data</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#contact">Contact</a>
+</li>
 {% endblock navbar %}
 
 {% block content %}

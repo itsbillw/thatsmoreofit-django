@@ -12,19 +12,15 @@
 {% endblock %}
 
 {% block navbar %}
-<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <a class="nav-link active" href="{% url 'gallery:index' %}">Gallery</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'data:index' %}">Data</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'home:index' %}#contact">Contact</a>
-    </li>
-  </ul>
-</div>
+<li class="nav-item">
+  <a class="nav-link active" href="{% url 'gallery:index' %}">Gallery</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'data:index' %}">Data</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'home:index' %}#contact">Contact</a>
+</li>
 {% endblock navbar %}
 
 {% block content %}
@@ -43,9 +39,7 @@
             <img class="first-slide" src="/static/gallery/images/background-1-trim.jpg" alt="First slide">
             <div class="container">
               <div class="carousel-caption text-left">
-                <h1>Example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                <p><a class="btn btn-lg btn-primary" href="{% url 'gallery:simple_upload' %}" role="button">Upload photos</a></p>
               </div>
             </div>
           </div>

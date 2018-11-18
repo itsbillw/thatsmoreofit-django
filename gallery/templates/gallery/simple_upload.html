@@ -1,0 +1,40 @@
+{% extends "home/base.html" %}
+{% load bootstrap4 %}
+{% load staticfiles %}
+
+{% block header %}
+
+<title>That's more of it - Upload</title>
+
+<!-- Custom styles for this template -->
+<link rel="stylesheet" type="text/css" href="{% static 'gallery/css/gallery.css' %}">
+
+{% endblock %}
+
+{% block navbar %}
+<li class="nav-item">
+  <a class="nav-link active" href="{% url 'gallery:index' %}">Gallery</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'data:index' %}">Data</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'home:index' %}#contact">Contact</a>
+</li>
+{% endblock navbar %}
+
+{% block content %}
+<div class="bgimg-2">
+  <form method="post" enctype="multipart/form-data" class="container">
+      {% csrf_token %}
+      <input type="file" name="myfile">
+      <button type="submit">Upload</button>
+  </form>
+
+  {% if uploaded_file_url %}
+    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+  {% endif %}
+
+  <p><a href="{% url 'gallery:index' %}">Return to home</a></p>
+</div>
+{% endblock %}

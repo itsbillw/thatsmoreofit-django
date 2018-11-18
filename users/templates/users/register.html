@@ -1,0 +1,40 @@
+{% extends "home/base.html" %}
+{% load bootstrap4 %}
+{% load staticfiles %}
+
+{% block header %}
+
+<title>That's more of it - Register</title>
+
+{% endblock %}
+
+{% block navbar %}
+<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'gallery:index' %}">Gallery</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'data:index' %}">Data</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#contact">Contact</a>
+    </li>
+  </ul>
+</div>
+{% endblock navbar %}
+
+{% block content %}
+<div class="container text-center" style="padding-top: 5rem">
+    <h2>Registration Page</h2>
+</div>
+<div class="container text-center mb-4" style="margin-top:30px;max-width: 85%">
+    <form method="post" action="{% url 'users:register' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit" class="btn btn-lg btn-primary" style="background-color: #4CAF50">Register</button>
+        <input type="hidden" name="next" value="{% url 'gallery:index' %}" />
+    </form>
+</div>
+<br>
+{% endblock content %}

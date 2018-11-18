@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '578x4)_u-avyb9q%gjc@a1@j0rjduf^7g-=zp$^at#=97elay7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['www.thatsmoreofit.com','itsbillw.pythonanywhere.com','*']
 
@@ -40,9 +40,10 @@ INSTALLED_APPS = [
 
     'bootstrap4',
 
-    'home',
-    'gallery',
     'data',
+    'gallery',
+    'home',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -124,10 +125,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/itsbillw/thatsmoreofit/static'
+STATIC_ROOT = '/home/itsbillw/django/thatsmoreofit/thatsmoreofit/static'
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'static'),
 # )
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# My settings
+LOGIN_URL = '/users/login/'
 
 # Settings for django-bootstrap4
 BOOTSTRAP4 = {
