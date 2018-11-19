@@ -18,7 +18,6 @@ class EntryForm(forms.ModelForm):
         widgets = {'insulin': forms.NumberInput()}
         widgets = {'insulin_type': forms.Select()}
         widgets = {'text': forms.Textarea(attrs = {'rows': '3'})}
-        widgets = {'carbs': forms.NumberInput()}
 
 # class UploadFileForm(forms.Form):
 #     title = forms.CharField(max_length=50)
