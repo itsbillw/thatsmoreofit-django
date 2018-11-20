@@ -2,58 +2,29 @@
 {% load bootstrap4 %}
 
 {% block content %}
-
 <main role="main">
-  <div class="container">
-    <form>
-      <select class="form-control col-md-6 mb-3">
-        <option selected>Choose an option...</option>
-        <option>First option</option>
-        <option>Second option</option>
-        <option>Third option</option>
-      </select>
-
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <div class="form-group">
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-          </div>
-        </div>
-        <div class="col-md-6 mb-3">
-          <div class="form-group">
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-          </div>
-        </div>
-      </div>
+  <div class="container" style="padding-top: 5rem; background: white">
+    <!-- List of uploaded documents -->
+    {% if documents %}
+    <ul>
+      {% for document in documents %}
+      <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No documents.</p>
+    {% endif %}
+    <!-- Upload form. Note enctype attribute! -->
+    <form action="{% url "data:reporting" %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>{{ form.non_field_errors }}</p>
+    <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+    <p>
+      {{ form.docfile.errors }}
+      {{ form.docfile }}
+    </p>
+    <p><input type="submit" value="Upload"/></p>
     </form>
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
-      Run report
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Choose output location</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <input type="file" class="form-control-file" id="exampleFormControlFile1">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </main>
-
 {% endblock content %}

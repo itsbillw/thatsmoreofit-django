@@ -1,13 +1,13 @@
 from django import forms
 
-from .models import Topic, Entry
+from .models import Topic, Entry, Document
 
 class TopicForm(forms.ModelForm):
     class Meta:
         model = Topic
         fields = ['text']
         labels = {'text': 'Topic name'}
-
+        
 class EntryForm(forms.ModelForm):
     class Meta:
         model = Entry
@@ -19,6 +19,7 @@ class EntryForm(forms.ModelForm):
         widgets = {'insulin_type': forms.Select()}
         widgets = {'text': forms.Textarea(attrs = {'rows': '3'})}
 
-# class UploadFileForm(forms.Form):
-#     title = forms.CharField(max_length=50)
-#     file = forms.FileField()
+class DocumentForm(forms.Form):
+    docfile = forms.FileField(
+        label='Select a file',
+    )

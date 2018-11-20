@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, Http404
+from django.template import RequestContext
 from django.urls import reverse
 
 import sqlite3
 
-from .models import Topic, Entry
-from .forms import TopicForm, EntryForm
+from .models import Topic, Entry, Document
+from .forms import TopicForm, EntryForm, DocumentForm
 
 def index(request):
     return render(request, 'data/index.html')
@@ -17,8 +18,24 @@ def datalog(request):
     return render(request, 'data/datalog.html', context)
 
 def reporting(request):
-    """The home page for reporting"""
-    return render(request, 'data/reporting.html')
+    # Handle file upload
+    if request.method == 'POST':
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            newdoc = Document(docfile = request.FILES['docfile'])
+            newdoc.save()
+
+            # Redirect to the document list after POST
+            return HttpResponseRedirect(reverse('data:reporting'))
+    else:
+        form = DocumentForm() # A empty, unbound form
+
+    # Load documents for the list page
+    documents = Document.objects.all()
+
+
+    # Render list page with the documents and the form
+    return render(request, 'data/reporting.html', {'documents': documents, 'form': form})
 
 def converter(request):
     return render(request, 'data/convert.html')

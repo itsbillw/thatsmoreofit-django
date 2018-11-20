@@ -18,24 +18,24 @@
     {% endblock %}
 
   </head>
-	<body>
+  <body>
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-
     <nav id="navbar-example2" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="{% url 'home:index' %}">THAT'S MORE OF IT</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
+
           {% block navbar %}
           {% endblock navbar %}
+
         </ul>
         {% if user.is_authenticated %}
         <ul class="navbar-nav px-3">
           <li class="nav-item text-nowrap">
-            <a class="nav-link" href="{% url 'gallery:photo_upload' %}">Upload</a>
+            <a class="nav-link">Hello, {{ user.username }}.</a>
           </li>
           <li class="nav-item text-nowrap">
             <a class="nav-link" href="{% url 'users:logout' %}">Log Out</a>
@@ -49,7 +49,6 @@
         </ul>
         {% endif %}
       </div>
-
     </nav>
 
     {% block content %}
@@ -60,5 +59,5 @@
     {% block subcontent %}
     {% endblock subcontent %}
 
-	</body>
+  </body>
 </html>
