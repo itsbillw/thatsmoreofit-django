@@ -22,6 +22,7 @@ def upload(request):
     path = os.path.join(settings.MEDIA_ROOT, 'notebooks')
     items = os.listdir(path)
     items = [item for item in items if os.path.isfile(os.path.join(path, item))]
+    items.remove('__init__.py')
 
     if request.POST and request.FILES:
         csvfile = request.FILES['csv_file']
