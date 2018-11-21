@@ -1,13 +1,13 @@
 from django import forms
 
-from .models import Topic, Entry, Document
+from .models import Topic, Entry
 
 class TopicForm(forms.ModelForm):
     class Meta:
         model = Topic
         fields = ['text']
         labels = {'text': 'Topic name'}
-        
+
 class EntryForm(forms.ModelForm):
     class Meta:
         model = Entry
@@ -22,4 +22,5 @@ class EntryForm(forms.ModelForm):
 class DocumentForm(forms.Form):
     docfile = forms.FileField(
         label='Select a file',
+        help_text='max. 42 megabytes'
     )

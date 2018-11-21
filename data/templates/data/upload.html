@@ -1,0 +1,41 @@
+{% extends "data/base.html" %}
+{% load bootstrap4 %}
+{% load staticfiles %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'data/css/upload.css' %}">
+
+<div role="main" class="container" style="padding-top:5rem">
+    <div class="container">
+        <h2>Upload data</h2>
+    </div>
+
+    <form action="{% url 'data:upload' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {# bootstrap_form form #}
+
+        {% buttons %}
+        <div class="form-group">
+          <label for="exampleFormControlFile1">Select input file</label>
+          <input type="file" name="csv_file" class="form-control-file" id="exampleFormControlFile1">
+          <label for="exampleFormControlSelect1">Select notebook</label>
+          <select class="form-control" id="exampleFormControlSelect1" style="width: 40%">
+            {% if items %}
+            {% for item in items %}
+            <option>{{ item }}</option>
+            {% endfor %}
+            {% else %}
+            <p>No notebooks.</p>
+            {% endif %}
+          </select>
+        </div>
+        <button type="submit" value="Upload">Upload</button>
+        {% endbuttons %}
+    </form>
+</div>
+<div role="main" class="container" style="padding-top:3rem;padding-bottom:3rem">
+  <table>
+      {{ ds1 | safe }}
+  </table>
+</div>
+{% endblock content %}

@@ -12,6 +12,9 @@ urlpatterns = [
     path('reporting/', views.reporting, name='reporting'),
 
     # Reporting page.
+    path('upload/', views.upload, name='upload'),
+
+    # Reporting page.
     path('converter/', views.converter, name='converter'),
 
     # Show all topics.

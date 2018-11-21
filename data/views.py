@@ -2,8 +2,17 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, Http404
 from django.template import RequestContext
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
+import pandas as pd
+import numpy as np
 import sqlite3
+
+import os
+from django.conf import settings
+
+import import_ipynb
+import media.notebooks.notebook as nb
 
 from .models import Topic, Entry, Document
 from .forms import TopicForm, EntryForm, DocumentForm
@@ -11,12 +20,36 @@ from .forms import TopicForm, EntryForm, DocumentForm
 def index(request):
     return render(request, 'data/index.html')
 
+@login_required
+def upload(request):
+    path = os.path.join(settings.MEDIA_ROOT, 'notebooks')
+    items = os.listdir(path)
+    items = [item for item in items if os.path.isfile(os.path.join(path, item))]
+
+    if request.POST and request.FILES:
+        csvfile = request.FILES['csv_file']
+        try:
+            ds1 = nb.notebook_function(csvfile)
+        except:
+            ds1 = pd.DataFrame(np.random.randint(0,100,size=(100, 26)), columns=list('ABCDEFGHIJKLMNOPQRSTUVWXYZ'))
+            ds1 = ds1.head()
+        ds1 = ds1.to_html(index=False)
+        context = {'ds1': ds1, 'items': items}
+    else:
+        ds1 = pd.DataFrame(np.random.randint(0,100,size=(100, 26)), columns=list('ABCDEFGHIJKLMNOPQRSTUVWXYZ'))
+        ds1 = ds1.head()
+        ds1 = ds1.to_html(index=False)
+        context = {'ds1': ds1, 'items': items}
+    return render(request, 'data/upload.html', context)
+
+@login_required
 def datalog(request):
     """The home page for data"""
     topics = Topic.objects.order_by('date_added')
     context = {'topics': topics}
     return render(request, 'data/datalog.html', context)
 
+@login_required
 def reporting(request):
     # Handle file upload
     if request.method == 'POST':
@@ -40,6 +73,7 @@ def reporting(request):
 def converter(request):
     return render(request, 'data/convert.html')
 
+@login_required
 def topics(request):
     """Show all topics"""
     topics = Topic.objects.order_by('date_added')
