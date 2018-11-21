@@ -7,7 +7,10 @@
 
 <div role="main" class="container" style="padding-top:5rem">
     <div class="container">
-        <h2>Upload data</h2>
+      <a href="{% url 'data:reporting' %}">
+        <button type="button" class="btn btn-secondary">Upload Notebook</button>
+      </a>
+      <h2>Jupyter Notebook data</h2>
     </div>
 
     <form action="{% url 'data:upload' %}" method="post" enctype="multipart/form-data">
@@ -16,8 +19,10 @@
 
         {% buttons %}
         <div class="form-group">
+          <p></p>
           <label for="exampleFormControlFile1">Select input file</label>
           <input type="file" name="csv_file" class="form-control-file" id="exampleFormControlFile1">
+          <p></p>
           <label for="exampleFormControlSelect1">Select notebook</label>
           <select class="form-control" id="exampleFormControlSelect1" style="width: 40%">
             {% if items %}

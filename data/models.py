@@ -8,7 +8,7 @@ class Topic(models.Model):
     def __str__(self):
         """Return a string representation of the model"""
         return self.text
-        
+
 class Entry(models.Model):
     """Something specific about a topic"""
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
@@ -46,4 +46,4 @@ class Entry(models.Model):
         return self.date_added
 
 class Document(models.Model):
-    docfile = models.FileField(upload_to='documents')
+    docfile = models.FileField(upload_to='notebooks')

@@ -12,3 +12,9 @@ body {
 body {
   padding-top: 3.5rem;
 }
+
+.btn-secondary {
+  position: absolute;
+  top: 6rem;
+  right: 2rem;
+}

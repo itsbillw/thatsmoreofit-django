@@ -1,9 +1,11 @@
 {% extends "data/base.html" %}
 {% load bootstrap4 %}
+{% load staticfiles %}
 
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'data/css/upload.css' %}">
 <main role="main">
-  <div class="container" style="padding-top: 5rem; background: white">
+  <div class="container" style="padding-top: 5rem">
     <!-- List of uploaded documents -->
     {% if documents %}
     <ul>

@@ -59,7 +59,7 @@ def reporting(request):
             newdoc.save()
 
             # Redirect to the document list after POST
-            return HttpResponseRedirect(reverse('data:reporting'))
+            return HttpResponseRedirect(reverse('data:upload'))
     else:
         form = DocumentForm() # A empty, unbound form
 
