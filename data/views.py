@@ -1,21 +1,18 @@
-from django.shortcuts import render, get_object_or_404
+from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, Http404
+from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
 from django.urls import reverse
-from django.contrib.auth.decorators import login_required
-
-import pandas as pd
-import numpy as np
-import sqlite3
-
-import os
-from django.conf import settings
-
-import import_ipynb
-import media.notebooks.notebook as nb
 
 from .models import Topic, Entry, Document
 from .forms import TopicForm, EntryForm, DocumentForm
+
+import os
+import import_ipynb
+import numpy as np
+import pandas as pd
+import sqlite3
 
 def index(request):
     return render(request, 'data/index.html')
@@ -29,6 +26,7 @@ def upload(request):
     if request.POST and request.FILES:
         csvfile = request.FILES['csv_file']
         try:
+            import media.notebooks.notebook as nb
             ds1 = nb.notebook_function(csvfile)
         except:
             ds1 = pd.DataFrame(np.random.randint(0,100,size=(100, 26)), columns=list('ABCDEFGHIJKLMNOPQRSTUVWXYZ'))
@@ -65,7 +63,6 @@ def reporting(request):
 
     # Load documents for the list page
     documents = Document.objects.all()
-
 
     # Render list page with the documents and the form
     return render(request, 'data/reporting.html', {'documents': documents, 'form': form})

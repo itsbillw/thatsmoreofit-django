@@ -18,3 +18,8 @@ body {
   top: 6rem;
   right: 2rem;
 }
+
+.container {
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #ddd;
+}
